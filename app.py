@@ -47,10 +47,10 @@ def home():
 @app.route('/pdf', methods=['POST'])
 def generate():
     name = request.args.get('filename', 'unnamed.pdf')
+    presentationalHints = request.args.get('presentational-hints', False)
     app.logger.info('POST  /pdf?filename=%s' % name)
-    #print ( request.get_data() )
     html = HTML(string=request.get_data())
-    pdf = html.write_pdf()
+    pdf = html.write_pdf(presentational_hints=presentationalHints)
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline;filename=%s' % name
@@ -61,9 +61,10 @@ def generate():
 @app.route('/multiple', methods=['POST'])
 def multiple():
     name = request.args.get('filename', 'unnamed.pdf')
+    presentationalHints = request.args.get('presentational-hints', False)
     app.logger.info('POST  /multiple?filename=%s' % name)
     htmls = json.loads(request.data.decode('utf-8'))
-    documents = [HTML(string=html).render() for html in htmls]
+    documents = [HTML(string=html).render(presentational_hints=presentationalHints) for html in htmls]
     pdf = documents[0].copy([page for doc in documents for page in doc.pages]).write_pdf()
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
