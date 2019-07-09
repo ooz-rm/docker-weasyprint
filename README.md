@@ -19,16 +19,16 @@ The [docker-weasyprint](https://github.com/ooz-rm/docker-weasyprint) project bun
 
 # Images
 
-Pre-built images can be found here; [ooz-rm/weasyprint](https://hub.docker.com/r/ooz-rm/weasyprint)
+Pre-built images can be found here; [oozch/weasyprint](https://hub.docker.com/r/ooz-rm/weasyprint)
 
-`docker pull ooz-rm/weasyprint`
+`docker pull oozch/weasyprint`
 
 # Usage - Docker Example
 
 Run the docker image, exposing port 5001
 
 ```
-docker run -p 5001:5001 ooz-rm/weasyprint
+docker run -p 5001:5001 oozch/weasyprint
 ```
 
 A `POST` to `/pdf` on port 5001 with an html body will result in a response containing a PDF. The filename may be set using a query parameter, e.g.:
