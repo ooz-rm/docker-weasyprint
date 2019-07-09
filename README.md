@@ -15,20 +15,20 @@ labels:
 ---
 # WeasyPrint HTML to PDF Microservice
 
-The [docker-weasyprint](https://github.com/robertomorelli/docker-weasyprint) project bundles [Weasyprint](http://weasyprint.org/) into an easy to use, OpenShift compatible, HTML to PDF microservice with a simple REST interface.
+The [docker-weasyprint](https://github.com/ooz-rm/docker-weasyprint) project bundles [Weasyprint](http://weasyprint.org/) into an easy to use, OpenShift compatible, HTML to PDF microservice with a simple REST interface.
 
 # Images
 
-Pre-built images can be found here; [robertomorelli/weasyprint](https://hub.docker.com/r/robertomorelli/weasyprint)
+Pre-built images can be found here; [ooz-rm/weasyprint](https://hub.docker.com/r/ooz-rm/weasyprint)
 
-`docker pull robertomorelli/weasyprint`
+`docker pull ooz-rm/weasyprint`
 
 # Usage - Docker Example
 
 Run the docker image, exposing port 5001
 
 ```
-docker run -p 5001:5001 robertomorelli/weasyprint
+docker run -p 5001:5001 ooz-rm/weasyprint
 ```
 
 A `POST` to `/pdf` on port 5001 with an html body will result in a response containing a PDF. The filename may be set using a query parameter, e.g.:
